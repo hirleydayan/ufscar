@@ -1,0 +1,86 @@
+#############################################
+    Exercise 2 for Activity2, UFSCar 2017    
+Edvaldo Santos, Hirley Silva, Helio Nakazato 
+#############################################
+2017-Jun-06 18:33:14  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:14  --  Tilt sensor is changed!
+2017-Jun-06 18:33:14  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:14  --  Tilt sensor is changed!
+2017-Jun-06 18:33:15  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:15  --  Tilt sensor is changed!
+2017-Jun-06 18:33:15  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:15  --  Tilt sensor is changed!
+2017-Jun-06 18:33:16  --  Touch sensor is pressed!
+2017-Jun-06 18:33:16  --  Tilt sensor is changed!
+2017-Jun-06 18:33:16  --  Touch sensor is pressed!
+2017-Jun-06 18:33:16  --  Tilt sensor is changed!
+2017-Jun-06 18:33:17  --  Touch sensor is pressed!
+2017-Jun-06 18:33:17  --  Tilt sensor is normal!
+2017-Jun-06 18:33:17  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:17  --  Tilt sensor is changed!
+2017-Jun-06 18:33:18  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:18  --  Tilt sensor is normal!
+2017-Jun-06 18:33:18  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:18  --  Tilt sensor is normal!
+2017-Jun-06 18:33:19  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:19  --  Tilt sensor is changed!
+2017-Jun-06 18:33:19  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:19  --  Tilt sensor is changed!
+2017-Jun-06 18:33:20  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:20  --  Tilt sensor is normal!
+2017-Jun-06 18:33:20  --  Touch sensor is pressed!
+2017-Jun-06 18:33:20  --  Tilt sensor is normal!
+2017-Jun-06 18:33:21  --  Touch sensor is pressed!
+2017-Jun-06 18:33:21  --  Tilt sensor is changed!
+2017-Jun-06 18:33:21  --  Touch sensor is pressed!
+2017-Jun-06 18:33:21  --  Tilt sensor is changed!
+2017-Jun-06 18:33:22  --  Touch sensor is pressed!
+2017-Jun-06 18:33:22  --  Tilt sensor is normal!
+2017-Jun-06 18:33:22  --  Touch sensor is pressed!
+2017-Jun-06 18:33:22  --  Tilt sensor is changed!
+2017-Jun-06 18:33:23  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:23  --  Tilt sensor is changed!
+2017-Jun-06 18:33:23  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:23  --  Tilt sensor is normal!
+2017-Jun-06 18:33:24  --  Touch sensor is pressed!
+2017-Jun-06 18:33:24  --  Tilt sensor is changed!
+2017-Jun-06 18:33:24  --  Touch sensor is pressed!
+2017-Jun-06 18:33:24  --  Tilt sensor is changed!
+2017-Jun-06 18:33:25  --  Touch sensor is pressed!
+2017-Jun-06 18:33:25  --  Tilt sensor is normal!
+2017-Jun-06 18:33:25  --  Touch sensor is pressed!
+2017-Jun-06 18:33:25  --  Tilt sensor is normal!
+2017-Jun-06 18:33:26  --  Touch sensor is pressed!
+2017-Jun-06 18:33:26  --  Tilt sensor is changed!
+2017-Jun-06 18:33:26  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:26  --  Tilt sensor is normal!
+2017-Jun-06 18:33:27  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:27  --  Tilt sensor is normal!
+2017-Jun-06 18:33:27  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:27  --  Tilt sensor is normal!
+2017-Jun-06 18:33:28  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:28  --  Tilt sensor is normal!
+2017-Jun-06 18:33:28  --  Touch sensor is pressed!
+2017-Jun-06 18:33:28  --  Tilt sensor is normal!
+2017-Jun-06 18:33:29  --  Touch sensor is pressed!
+2017-Jun-06 18:33:29  --  Tilt sensor is normal!
+2017-Jun-06 18:33:29  --  Touch sensor is pressed!
+2017-Jun-06 18:33:29  --  Tilt sensor is normal!
+2017-Jun-06 18:33:30  --  Touch sensor is pressed!
+2017-Jun-06 18:33:30  --  Tilt sensor is changed!
+2017-Jun-06 18:33:30  --  Touch sensor is pressed!
+2017-Jun-06 18:33:30  --  Tilt sensor is changed!
+2017-Jun-06 18:33:31  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:31  --  Tilt sensor is changed!
+2017-Jun-06 18:33:31  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:31  --  Tilt sensor is changed!
+2017-Jun-06 18:33:32  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:32  --  Tilt sensor is normal!
+2017-Jun-06 18:33:32  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:32  --  Tilt sensor is changed!
+2017-Jun-06 18:33:33  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:33  --  Tilt sensor is normal!
+2017-Jun-06 18:33:33  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:33  --  Tilt sensor is changed!
+2017-Jun-06 18:33:34  --  Touch sensor is not pressed!
+2017-Jun-06 18:33:34  --  Tilt sensor is changed!

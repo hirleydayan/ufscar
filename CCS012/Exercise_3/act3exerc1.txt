@@ -1,0 +1,28 @@
+##############################################
+    Exercise 1 for Activity3, UFSCar 2017
+ Edvaldo Santos, Hirley Silva, Helio Nakazato
+##############################################
+[2017-Jun-13 16:03:41] ADC Value: 142
+[2017-Jun-13 16:03:46] ADC Value: 141
+[2017-Jun-13 16:03:51] ADC Value: 142
+[2017-Jun-13 16:03:56] ADC Value: 141
+[2017-Jun-13 16:04:01] ADC Value: 150
+[2017-Jun-13 16:04:06] ADC Value: 155
+[2017-Jun-13 16:04:11] ADC Value: 149
+[2017-Jun-13 16:04:16] ADC Value: 149
+[2017-Jun-13 16:04:21] ADC Value: 147
+[2017-Jun-13 16:04:26] ADC Value: 146
+[2017-Jun-13 16:04:31] ADC Value: 146
+[2017-Jun-13 16:04:36] ADC Value: 145
+[2017-Jun-13 16:04:41] ADC Value: 145
+[2017-Jun-13 16:04:46] ADC Value: 145
+[2017-Jun-13 16:04:51] ADC Value: 147
+[2017-Jun-13 16:04:56] ADC Value: 147
+[2017-Jun-13 16:05:01] ADC Value: 153
+[2017-Jun-13 16:05:06] ADC Value: 152
+[2017-Jun-13 16:05:11] ADC Value: 149
+[2017-Jun-13 16:05:16] ADC Value: 147
+[2017-Jun-13 16:05:21] ADC Value: 147
+[2017-Jun-13 16:05:26] ADC Value: 146
+[2017-Jun-13 16:05:31] ADC Value: 146
+[2017-Jun-13 16:05:36] ADC Value: 145
