@@ -1,15 +1,15 @@
 """Temperature test module."""
 import qcom_db_410c.sensors.temperature as t
-import spidev
 import platform
 import re
 
-from libsoc import gpio
 
 TARGET_ID = "qcom"
 
 if __name__ == '__main__':
     if re.search(TARGET_ID, platform.platform()):
+        import spidev
+        from libsoc import gpio
         spi = spidev.SpiDev()
         spi.open(0, 0)
         spi.max_speed_hz = 10000
@@ -17,11 +17,11 @@ if __name__ == '__main__':
         spi.bits_per_word = 8
         channel = [0x01, 0xA0, 0x00]
         gpio_cs = gpio.GPIO(18, gpio.DIRECTION_OUTPUT)
-        tp = t.Temperature(gpio_cs, spi, channel)
+        tp = t.Temperature("test_temperature_sensor", gpio_cs, spi, channel)
     else:
-        tp = t.Temperature()
+        tp = t.Temperature("test_temperature_sensor")
 
-    print("ADC: %.2f" % tp.get_adc())
-    print("Volts: %.2f" % tp.get_volts())
-    print("Celcius: %.2f" % tp.get_celsius())
-    print("Fahrenheight: %.2f" % tp.get_fahrenheight())
+    print("ADC [%s]: %.2f" % (tp.get_id(), tp.get_adc()))
+    print("Volts [%s]: %.2f" % (tp.get_id(), tp.get_volts()))
+    print("Celcius [%s]: %.2f" % (tp.get_id(), tp.get_celsius()))
+    print("Fahrenheight [%s]: %.2f" % (tp.get_id(), tp.get_fahrenheight()))

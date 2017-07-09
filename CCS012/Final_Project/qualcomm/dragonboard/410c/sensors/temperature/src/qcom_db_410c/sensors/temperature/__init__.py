@@ -11,8 +11,13 @@ TARGET_ID = "qcom"
 class Temperature:
     """Temperature sensor."""
 
-    def __init__(self, gpio=None, spi=None, channel=None):
+    def __init__(self, id, gpio=None, spi=None, channel=None):
         """Init temperature sensor."""
+        if id is None:
+            raise ValueError("id must not be None")
+
+        self.id = id
+
         if spi is None or \
            channel is None or \
            gpio is None:
@@ -45,6 +50,10 @@ class Temperature:
         else:
             adc_value = uniform(130.0, 150.0)
         return adc_value
+
+    def get_id(self):
+        """Get sensor ID."""
+        return self.id
 
     def get_volts(self):
         """Get volts."""
