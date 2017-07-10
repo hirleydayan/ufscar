@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """IBM Watson IoT Platform."""
 import protocols.mqtt as mqtt
 import json

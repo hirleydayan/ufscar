@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """AWS IoT Platform."""
 import protocols.mqtt as mqtt
 import json

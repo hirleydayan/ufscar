@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Temperature test module."""
 import qcom_db_410c.sensors.temperature as t
 import platform

@@ -11,8 +11,14 @@ TARGET_ID = "qcom"
 class LDR:
     """Temperature sensor."""
 
-    def __init__(self, gpio=None, spi=None, channel=None):
-        """Init temperature sensor."""
+    def __init__(self, id, gpio=None, spi=None, channel=None):
+        """Init ldr sensor."""
+
+        if id is None:
+            raise ValueError("id must not be None")
+
+        self.id = id
+
         if spi is None or \
            channel is None or \
            gpio is None:
@@ -46,10 +52,14 @@ class LDR:
             adc_value = uniform(130.0, 150.0)
         return adc_value
 
+    def get_id(self):
+        """Get sensor ID."""
+        return self.id
+
     def get_volts(self):
         """Get volts."""
         return (self.get_adc() * 3.3) / 1023
 
     def get_lux(self, r=10):
-        """Get temperature in celsius."""
+        """Get lux."""
         return 500 * (3.3 - self.get_volts())/(r * self.get_volts())

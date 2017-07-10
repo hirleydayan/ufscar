@@ -1,15 +1,15 @@
+#!/usr/bin/env python3
 """Temperature test module."""
 import qcom_db_410c.sensors.ldr as ldr
-import spidev
 import platform
 import re
-
-from libsoc import gpio
 
 TARGET_ID = "qcom"
 
 if __name__ == '__main__':
     if re.search(TARGET_ID, platform.platform()):
+        import spidev
+        from libsoc import gpio
         spi = spidev.SpiDev()
         spi.open(0, 0)
         spi.max_speed_hz = 10000
@@ -17,10 +17,10 @@ if __name__ == '__main__':
         spi.bits_per_word = 8
         channel = [0x01, 0x80, 0x00]
         gpio_cs = gpio.GPIO(18, gpio.DIRECTION_OUTPUT)
-        tp = ldr.LDR(gpio_cs, spi, channel)
+        tp = ldr.LDR("test_ldr_sensor", gpio_cs, spi, channel)
     else:
-        tp = ldr.LDR()
+        tp = ldr.LDR("test_ldr_sensor")
 
-    print("ADC: %.2f" % tp.get_adc())
-    print("Volts: %.2f" % tp.get_volts())
-    print("Lux: %.2f" % tp.get_lux())
+    print("ADC [%s]: %.2f" % (tp.get_id(), tp.get_adc()))
+    print("Volts [%s]: %.2f" % (tp.get_id(), tp.get_volts()))
+    print("Lux [%s]: %.2f" % (tp.get_id(), tp.get_lux()))
