@@ -9,7 +9,7 @@ TARGET_ID = "qcom"
 
 
 class LDR:
-    """Temperature sensor."""
+    """LDR sensor."""
 
     def __init__(self, id, gpio=None, spi=None, channel=None):
         """Init ldr sensor."""

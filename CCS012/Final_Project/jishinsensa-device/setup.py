@@ -16,5 +16,5 @@ setup(name="jishinsensa-device",
       namespace_packages=["jishinsensa", "jishinsensa.services"],
 
       scripts=[],
-      install_requires=[]
+      install_requires=["ConfigParser"]
       )

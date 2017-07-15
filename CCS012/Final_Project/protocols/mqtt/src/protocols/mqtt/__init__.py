@@ -60,7 +60,7 @@ def connect(connection_data):
 
     if "endpoint" in connection_data:
         if "port" in connection_data:
-            port = connection_data["port"]
+            port = int(connection_data["port"])
         else:
             port = 1883
 
@@ -72,7 +72,7 @@ def connect(connection_data):
         mqtt_client.connect(host=connection_data["endpoint"],
                             port=port, keepalive=keepalive)
         mqtt_client.loop_start()
-
+        # mqtt_client.loop_forever()
         return mqtt_client
     else:
         return None
