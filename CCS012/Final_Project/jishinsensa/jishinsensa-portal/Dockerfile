@@ -49,9 +49,6 @@ RUN ln -s /freeboard/node_modules/crypto-js/sha256.js \
 RUN ln -s /freeboard/node_modules/paho-mqtt/mqttws31-min.js \
   /freeboard/plugins/freeboard-aws-iot-ws-mqtt/
 
-# Downloading dashboard file
-RUN curl https://raw.githubusercontent.com/hirleydayan/ufscar/master/CCS012/Final_Project/jishinsensa/jishinsensa-portal/dashboard.json > /freeboard/dashboard.json
-
 # Cleanup
 RUN apt-get clean
 
