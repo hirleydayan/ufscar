@@ -1,78 +1,113 @@
 """MQTT Protocol."""
+import logging
 import paho.mqtt.client as mqtt
 import ssl
 
 
-def on_connect(mqttc, obj, flags, rc):
-    """MQTT on connect callback."""
-    print("connected: " + str(rc))
+class MQTT:
+    """MQTT Class."""
 
+    def __init__(self, connection_data):
+        """Constructor."""
+        self.mqttc = None
+        self.logger = logging.getLogger()
+        self.conn_data = connection_data
 
-def on_message(mqttc, obj, msg):
-    """MQTT on message callback."""
-    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+    def __del__(self):
+        """Destructor."""
+        if self.mqttc is not None:
+            self.mqttc.disconnect()
 
+    def on_connect(self, mqttc, obj, flags, rc):
+        """MQTT on connect callback."""
+        self.logger.debug("Connected: " + str(rc))
 
-def on_publish(mqttc, obj, mid):
-    """MQTT on publish callback."""
-    print("message_id: " + str(mid))
+    def on_message(self, mqttc, obj, msg):
+        """MQTT on message callback."""
+        self.logger.debug(msg.topic + " " +
+                          str(msg.qos) + " " + str(msg.payload))
 
+    def on_publish(self, mqttc, obj, mid):
+        """MQTT on publish callback."""
+        self.logger.debug("Message ID: " + str(mid))
 
-def on_subscribe(mqttc, obj, mid, granted_qos):
-    """MQTT on subscribe callback."""
-    print("subscribed: " + str(mid) + " " + str(granted_qos))
+    def on_subscribe(self, mqttc, obj, mid, granted_qos):
+        """MQTT on subscribe callback."""
+        self.logger.debug("Subscribed: " + str(mid) + " " + str(granted_qos))
 
+    def on_log(self, mqttc, obj, level, string):
+        """MQTT on log, for debugging, callback."""
+        self.logger.debug(string)
 
-def on_log(mqttc, obj, level, string):
-    """MQTT on log, for debugging, callback."""
-    print(string)
+    def connect(self):
+        """MQTT connect."""
+        if type(self.conn_data) is not dict:
+            return None
 
-
-def connect(connection_data):
-    """MQTT connect."""
-    if type(connection_data) is not dict:
-        return None
-
-    if "client_id" in connection_data:
-        mqtt_client = mqtt.Client(connection_data["client_id"])
-    else:
-        print ('Cannot connect. Missing "client_id".')
-        return None
-
-    mqtt_client.on_connect = on_connect
-    mqtt_client.on_publish = on_publish
-    mqtt_client.on_subscribe = on_subscribe
-    mqtt_client.on_log = on_log
-
-    if "username" in connection_data and\
-       "password" in connection_data:
-        mqtt_client.username_pw_set(username=connection_data["username"],
-                                    password=connection_data["password"])
-    elif "ca" in connection_data and\
-         "certificate" in connection_data and\
-         "private_key" in connection_data:
-        mqtt_client.tls_set(connection_data["ca"],
-                            certfile=connection_data["certificate"],
-                            keyfile=connection_data["private_key"],
-                            cert_reqs=ssl.CERT_REQUIRED,
-                            tls_version=ssl.PROTOCOL_TLSv1_2,
-                            ciphers=None)
-
-    if "endpoint" in connection_data:
-        if "port" in connection_data:
-            port = int(connection_data["port"])
+        if "client_id" in self.conn_data:
+            self.mqttc = mqtt.Client(self.conn_data["client_id"])
         else:
-            port = 1883
+            self.logger.error('Cannot connect. Missing "client_id".')
+            return None
 
-        if "keepalive" in connection_data:
-            keepalive = connection_data["keepalive"]
+        self.mqttc.on_connect = self.on_connect
+        self.mqttc.on_publish = self.on_publish
+        self.mqttc.on_subscribe = self.on_subscribe
+        self.mqttc.on_log = self.on_log
+
+        if "username" in self.conn_data and\
+           "password" in self.conn_data:
+            self.mqttc.username_pw_set(username=self.conn_data["username"],
+                                       password=self.conn_data["password"])
+        elif "ca" in self.conn_data and\
+             "certificate" in self.conn_data and\
+             "private_key" in self.conn_data:
+            self.mqttc.tls_set(self.conn_data["ca"],
+                               certfile=self.conn_data["certificate"],
+                               keyfile=self.conn_data["private_key"],
+                               cert_reqs=ssl.CERT_REQUIRED,
+                               tls_version=ssl.PROTOCOL_TLSv1_2,
+                               ciphers=None)
+
+        if "endpoint" in self.conn_data:
+            if "port" in self.conn_data:
+                port = int(self.conn_data["port"])
+            else:
+                port = 1883
+
+            if "keepalive" in self.conn_data:
+                keepalive = self.conn_data["keepalive"]
+            else:
+                keepalive = 60
+
+            self.mqttc.connect(host=self.conn_data["endpoint"],
+                               port=port, keepalive=keepalive)
+            self.mqttc.loop_start()
+            # mqttc.loop_forever()
+            return self.mqttc
         else:
-            keepalive = 60
+            return None
 
-        mqtt_client.connect(host=connection_data["endpoint"],
-                            port=port, keepalive=keepalive)
-        mqtt_client.loop_start()
-        # mqtt_client.loop_forever()
-        return mqtt_client
-    else:
+        def publish(self, mqttc, topic, data, qos=0):
+            """Publish method."""
+            return self.mqttc.publish(topic, data)
+
+        def subscribe(self, mqttc, topic, data, qos=0):
+            """Subscribe method."""
+            return self.mqttc.subscribe(topic, qos)
+
+    def get_connection_data(self, parameter=None):
+        """Get connection data."""
+        if parameter is None:
+            return self.conn_data
+        if parameter in self.conn_data:
+            return self.conn_data[parameter]
         return None
+
+    def publish(self, topic, data, qos=0):
+        """Publish method."""
+        return self.mqttc.publish(topic, data)
+
+    def subscribe(self, topic, data, qos=0):
+        """Subscribe method."""
+        return self.mqttc.subscribe(topic, qos)
