@@ -1,6 +1,6 @@
 """Dragonboard sensors module."""
-import platform
-import re
+# import platform
+# import re
 
 TARGET_ID = "qcom"
 
@@ -16,14 +16,14 @@ class GPS():
 
         self.id = id
 
-        if re.search(TARGET_ID, platform.platform()):
-            # TODO: GPS code for device has to be added
-            pass
-        else:
-            if simulated_coordinates is not None:
-                self.coordinates_list = simulated_coordinates
-                self.coord_idx = 0
-                self.coord_max = len(self.coordinates_list) - 1
+        # if re.search(TARGET_ID, platform.platform()):
+        # TODO: GPS code for device has to be added
+        #    pass
+        # else:
+        if simulated_coordinates is not None:
+            self.coordinates_list = simulated_coordinates
+            self.coord_idx = 0
+            self.coord_max = len(self.coordinates_list) - 1
 
     def get_id(self):
         """Get sensor ID."""
@@ -31,13 +31,13 @@ class GPS():
 
     def get_coordinates(self):
         """Get tilt."""
-        if re.search(TARGET_ID, platform.platform()):
-            # TODO: GPS code for device has to be added
-            coordinate = None
-        else:
-            if self.coordinates_list:
-                if self.coord_idx > self.coord_max:
-                    self.coord_idx = 0
-                coordinates = self.coordinates_list[self.coord_idx]
-                self.coord_idx += 1
+        # if re.search(TARGET_ID, platform.platform()):
+        # TODO: GPS code for device has to be added
+        coordinates = None
+        # else:
+        if self.coordinates_list:
+            if self.coord_idx > self.coord_max:
+                self.coord_idx = 0
+            coordinates = self.coordinates_list[self.coord_idx]
+            self.coord_idx += 1
         return coordinates

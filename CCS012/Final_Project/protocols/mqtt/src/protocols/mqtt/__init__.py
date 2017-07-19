@@ -88,11 +88,11 @@ class MQTT:
         else:
             return None
 
-        def publish(self, mqttc, topic, data, qos=0):
+        def publish(self, mqttc, topic, data, qos=1):
             """Publish method."""
             return self.mqttc.publish(topic, data)
 
-        def subscribe(self, mqttc, topic, data, qos=0):
+        def subscribe(self, mqttc, topic, data, qos=1):
             """Subscribe method."""
             return self.mqttc.subscribe(topic, qos)
 

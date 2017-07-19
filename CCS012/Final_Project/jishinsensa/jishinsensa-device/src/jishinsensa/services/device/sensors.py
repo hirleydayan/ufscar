@@ -74,11 +74,11 @@ class GPS(Sensor):
     def __init__(self, simulated_coordinates=None):
         """Init GPS sensor."""
         self.gps_sensor = None
-        if re.search(ID_HW_TARGET, platform.platform()):
-            self.gps_sensor = dbgps.GPS(ID_GPS)
-        else:
-            if simulated_coordinates is not None:
-                self.gps_sensor = dbgps.GPS(ID_GPS, simulated_coordinates)
+        # if re.search(ID_HW_TARGET, platform.platform()):
+        # self.gps_sensor = dbgps.GPS(ID_GPS)
+        # else:
+        if simulated_coordinates is not None:
+            self.gps_sensor = dbgps.GPS(ID_GPS, simulated_coordinates)
 
     def get(self):
         """Get sensor data."""

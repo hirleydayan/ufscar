@@ -49,7 +49,7 @@ class LDR:
                 adc_value = adc_value | (rx[2] & 0xff)
                 # adc_value = (rx[1] & 3) << 8 | rx[2]
         else:
-            adc_value = uniform(130.0, 150.0)
+            adc_value = uniform(850, 900)
         return adc_value
 
     def get_id(self):
@@ -58,8 +58,10 @@ class LDR:
 
     def get_volts(self):
         """Get volts."""
-        return (self.get_adc() * 3.3) / 1023
+        return (self.get_adc() * 5) / 1023
 
     def get_lux(self, r=10):
         """Get lux."""
-        return 500 * (3.3 - self.get_volts())/(r * self.get_volts())
+        r_ldr = (r * (5 - self.get_volts()))/self.get_volts()
+        # 500 * (33 - self.get_volts())/(r * self.get_volts())
+        return 500/r_ldr

@@ -1,0 +1,162 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"1": 1,
+				"3": 9
+			},
+			"col": {
+				"1": 1,
+				"3": 1
+			},
+			"col_width": "1",
+			"widgets": [
+				{
+					"type": "google_map",
+					"settings": {
+						"lat": "datasources[\"UFSCar Dragonboard\"].twitter.geo_coordinates[0]",
+						"lon": "datasources[\"UFSCar Dragonboard\"].twitter.geo_coordinates[1]"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "tstamp = parseInt(datasources[\"UFSCar Dragonboard\"].twitter.timestamp_ms)\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nformattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);\nreturn formattedTime",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 5
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "datasources[\"UFSCar Dragonboard\"].twitter.text",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Earthquake Alarm",
+			"width": 1,
+			"row": {
+				"1": 15,
+				"3": 9,
+				"5": 5
+			},
+			"col": {
+				"1": 1,
+				"3": 2,
+				"5": 2
+			},
+			"col_width": "2",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "var tweetTx = datasources[\"UFSCar Dragonboard\"].twitter.text;\nvar tweetId = datasources[\"UFSCar Dragonboard\"].twitter.id;\n\nvar s = \"tremor\";\n\nif(tweetTx.toUpperCase().includes(\"ENCHENTE\")){\n    return;\n}\n\nvar qkcounterObj = sessionStorage.getItem(tweetId);\n\nif (qkcounterObj!=null) {\n    return \"\";\n}\n\nsessionStorage.setItem(tweetId, tweetId);\n\nqkcounterIdx = sessionStorage.getItem(s);\n\nif (qkcounterIdx==null) {\n    qkcounterIdx = 1;\n    sessionStorage.setItem(s, 1);\n}\n\nvar qkcounter = parseInt(document.getElementById(\"qkcounter\").value);\n\nif(tweetTx.toUpperCase().includes(s.toUpperCase())){\n    if(qkcounterIdx>=qkcounter){\n        sessionStorage.setItem(s, 1);\n        return \"Emergency! Earthquake!\";\n    }\n    qkcounterIdx ++;\n    sessionStorage.setItem(s, qkcounterIdx);\n}\n\nreturn \"\";\n",
+						"animate": true
+					}
+				},
+				{
+					"type": "html",
+					"settings": {
+						"html": "<script>\nfunction qkCounterFunc(){ \n    var s = \"tremor\";\n\tsessionStorage.setItem(s, 1);\n}   \n</script>\n<div style=\"margin-top:30px;margin-left:10px;\"><input id=\"qkcounter\" value=\"0\"><button id=\"qkcountersubmit\" style=\"margin-left:5px;\" onclick=\"qkCounterFunc();\">Set Earthquake Threshold</button></div>\n\n\n",
+						"height": 1
+					}
+				}
+			]
+		},
+		{
+			"title": "Flooding Alarm",
+			"width": 1,
+			"row": {
+				"1": 23,
+				"3": 15,
+				"4": 1,
+				"6": 1
+			},
+			"col": {
+				"1": 1,
+				"3": 2,
+				"4": 2,
+				"6": 2
+			},
+			"col_width": "2",
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "var tweetTx = datasources[\"UFSCar Dragonboard\"].twitter.text;\nvar tweetId = datasources[\"UFSCar Dragonboard\"].twitter.id;\n\nvar s = \"enchente\";\n\nif(tweetTx.toUpperCase().includes(\"TREMOR\")){\n    return;\n}\n\nvar fdcounterObj = sessionStorage.getItem(tweetId);\n\nif (fdcounterObj!=null) {\n    return \"\";\n}\n\nsessionStorage.setItem(tweetId, tweetId);\n\nfdcounterIdx = sessionStorage.getItem(s);\n\nif (fdcounterIdx==null) {\n    fdcounterIdx = 1;\n    sessionStorage.setItem(s, 1);\n}\n\nvar fdcounter = parseInt(document.getElementById(\"fdcounter\").value);\n\nif(tweetTx.toUpperCase().includes(s.toUpperCase())){\n    if(fdcounterIdx>=fdcounter){\n        sessionStorage.setItem(s, 1);\n        return \"Emergency! Flooding!\";\n    }\n    fdcounterIdx ++;\n    sessionStorage.setItem(s, fdcounterIdx);\n}\n\nreturn \"\";\n",
+						"animate": true
+					}
+				},
+				{
+					"type": "html",
+					"settings": {
+						"html": "<script>\nfunction fdCounterFunc(){ \n    var s = \"enchente\";\n\tsessionStorage.setItem(s, 1);\n}   \n</script>\n<div style=\"margin-top:30px;margin-left:10px;\"><input id=\"fdcounter\" value=\"0\"><button id=\"fdcountersubmit\" style=\"margin-left:5px;\" onclick=\"fdCounterFunc();\">Set Flooding Threshold</button></div>\n\n\n",
+						"height": 1
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<div style=\"text-align:center;\"><strong><font size=\"5\" color=\"#b88e4d\">JISHINSENSA - EMERGENCY RESPONSE - TWEET PORTAL</font></strong></div>",
+						"height": 1
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "UFSCar Dragonboard",
+			"type": "aws_iot_ws_mqtt",
+			"settings": {
+				"endpoint": "a2o3h5dcofelke.iot.us-west-2.amazonaws.com",
+				"region": "us-west-2",
+				"accessKey": "AKIAILA3GQ7EVSR4DK5A",
+				"secretKey": "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",
+				"topics": [
+					{
+						"topicName": "db_evt"
+					},
+					{
+						"topicName": "tw_evt"
+					}
+				]
+			}
+		}
+	],
+	"columns": 3
+}
