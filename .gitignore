@@ -4,6 +4,7 @@
 *.key
 *.crt
 dashboard.json
+twitter.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
