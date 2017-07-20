@@ -16,4 +16,4 @@ setup(name="twitter",
       namespace_packages=["social"],
 
       scripts=[],
-      install_requires=[])
+      install_requires=["tweepy"])
