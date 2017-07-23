@@ -1,0 +1,266 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<div style=\"text-align:center;\"><strong><font size=\"5\" color=\"#b88e4d\">JISHINSENSA - EMERGENCY RESPONSE - SENSORS PORTAL</font></strong></div>",
+						"height": 1
+					}
+				}
+			]
+		},
+		{
+			"title": "Temperature",
+			"width": 1,
+			"row": {
+				"1": 1,
+				"2": 1,
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 2,
+				"5": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "",
+						"value": "datasources[\"UFSCar Dragonboard\"].dragonboard.temperature[0].value\n",
+						"units": "Celsius",
+						"min_value": 0,
+						"max_value": 70
+					}
+				},
+				{
+					"type": "sparkline",
+					"settings": {
+						"title": "",
+						"value": [
+							"datasources[\"UFSCar Dragonboard\"].dragonboard.temperature[0].value"
+						],
+						"include_legend": false
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Time",
+						"size": "regular",
+						"value": "tstamp = datasources[\"UFSCar Dragonboard\"].dragonboard.temperature[0].timestamp\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nformattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);\nreturn formattedTime\n",
+						"sparkline": false,
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Last Data Uploading",
+			"width": 1,
+			"row": {
+				"1": 15,
+				"2": 1,
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"1": 1,
+				"2": 1,
+				"3": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "tstamp = datasources[\"UFSCar Dragonboard\"].dragonboard.timestamp\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nreturn hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);\n",
+						"sparkline": false,
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Lux",
+			"width": 1,
+			"row": {
+				"1": 19,
+				"2": 5,
+				"3": 5,
+				"5": 5
+			},
+			"col": {
+				"1": 1,
+				"2": 1,
+				"3": 3,
+				"5": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"value": "datasources[\"UFSCar Dragonboard\"].dragonboard.lux[0].value",
+						"units": "lx",
+						"min_value": 0,
+						"max_value": "1000"
+					}
+				},
+				{
+					"type": "sparkline",
+					"settings": {
+						"value": [
+							"datasources[\"UFSCar Dragonboard\"].dragonboard.lux[0].value"
+						]
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Time",
+						"size": "regular",
+						"value": "tstamp = datasources[\"UFSCar Dragonboard\"].dragonboard.lux[0].timestamp\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nreturn hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "GPS",
+			"width": 1,
+			"row": {
+				"1": 33,
+				"2": 15,
+				"3": 9,
+				"5": 9
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 1,
+				"5": 1
+			},
+			"col_width": "1",
+			"widgets": [
+				{
+					"type": "google_map",
+					"settings": {
+						"lat": "coordinates = datasources[\"UFSCar Dragonboard\"].dragonboard.gps[0].value\nreturn coordinates.split(\",\")[0]",
+						"lon": "coordinates = datasources[\"UFSCar Dragonboard\"].dragonboard.gps[0].value\nreturn coordinates.split(\",\")[1];"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "tstamp = datasources[\"UFSCar Dragonboard\"].dragonboard.gps[0].timestamp\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nreturn hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);\n\n",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "Tilt",
+			"width": 1,
+			"row": {
+				"1": 45,
+				"2": 19,
+				"3": 19,
+				"5": 19
+			},
+			"col": {
+				"1": 1,
+				"2": 1,
+				"3": 3,
+				"5": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"value": "datasources[\"UFSCar Dragonboard\"].dragonboard.tilt[0].value",
+						"on_text": "true",
+						"off_text": "false"
+					}
+				},
+				{
+					"type": "sparkline",
+					"settings": {
+						"value": [
+							"datasources[\"UFSCar Dragonboard\"].dragonboard.tilt[0].value"
+						]
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Time",
+						"size": "regular",
+						"value": "tstamp = datasources[\"UFSCar Dragonboard\"].dragonboard.tilt[0].timestamp\nvar date = new Date(tstamp);\nvar hours = date.getHours();\nvar minutes = \"0\" + date.getMinutes();\nvar seconds = \"0\" + date.getSeconds();\nreturn hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 29
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": "3",
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"height": 10
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Name",
+			"type": "type",
+			"settings": {
+				"endpoint": "aws_endpoint",
+				"region": "region",
+				"accessKey": "access_key",
+				"secretKey": "access_secret",
+				"topics": [
+					{
+						"topicName": "topic1"
+					},
+					{
+						"topicName": "topic2"
+					}
+				],
+				"name": "Name"
+			}
+		}
+	],
+	"columns": 3
+}
