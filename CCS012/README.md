@@ -1,7 +1,7 @@
 # [UFSCar](http://www.ufscar.br) [PPGCCS](http://www.ppgccs.net) CCS012 IoT Class Material, 2nd Semester 2017  
 
 This repository contains the result material of IoT post-graduation class from the
-Computer Science discipline at UFSCar university in Sorocaba, Brazil, in first semester of 2017.  
+[Computer Science](http://www.ppgccs.net) discipline at UFSCar university in Sorocaba, Brazil, in first semester of 2017.  
 
 This material contains code, pdfs and references written and used during the classes.
 
